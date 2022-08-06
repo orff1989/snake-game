@@ -12,11 +12,11 @@ class Food:
         self.color = (223, 163, 49)
         self.randomize_position()
 
-    def randomize_position(self):
+    def randomize_position(self): # setting a random position for the food
         self.position = (random.randint(0, self.grid.GRID_WIDTH - 1) * self.grid.GRIDSIZE,
                          random.randint(0, self.grid.GRID_HEIGHT - 1) * self.grid.GRIDSIZE)
 
-    def draw(self, surface):
+    def draw(self, surface): # drawing the food
         r = pygame.Rect((self.position[0], self.position[1]), (self.grid.GRIDSIZE, self.grid.GRIDSIZE))
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, (93, 216, 228), r, 1)

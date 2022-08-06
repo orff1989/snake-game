@@ -32,13 +32,13 @@ def game():
 
     myfont = pygame.font.SysFont("monospace", 16)
     score = 0
-    while (True):
+    while (True): # main loop
         clock.tick(10)
         snake.handle_keys()
         drawGrid(surface, grid)
         snake.move()
 
-        if snake.get_head_position() == food.position:
+        if snake.get_head_position() == food.position: # checking if the snake is reached to the food
             snake.length += 1
             score += 1
             food.randomize_position()

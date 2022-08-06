@@ -8,13 +8,12 @@ DOWN = (0, 1)
 LEFT = (-1, 0)
 RIGHT = (1, 0)
 
-
-class Snake(object):
+class Snake(object): # This class represent the snake
     def __init__(self, new_grid: Grid):
-        self.length = 1
+        self.length = 1 # setting the snake size to 1
         self.grid = new_grid
-        self.positions = [((new_grid.SCREEN_WIDTH / 2), (new_grid.SCREEN_HEIGHT / 2))]
-        self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
+        self.positions = [((new_grid.SCREEN_WIDTH / 2), (new_grid.SCREEN_HEIGHT / 2))] # setting the snake in the middle of the surface
+        self.direction = random.choice([UP, DOWN, LEFT, RIGHT]) # setting random direction for the snake
         self.color = (17, 24, 47)
 
     def get_head_position(self):
@@ -40,19 +39,18 @@ class Snake(object):
             if len(self.positions) > self.length:
                 self.positions.pop()
 
-    def reset(self):
+    def reset(self): # setting the snake properties to starting state
         self.length = 1
         self.positions = [((self.grid.SCREEN_WIDTH / 2), (self.grid.SCREEN_HEIGHT / 2))]
         self.direction = random.choice([UP, DOWN, LEFT, RIGHT])
 
-    def draw(self, surface):
+    def draw(self, surface): # drawing the snake
         for p in self.positions:
-            pass
             r = pygame.Rect((p[0], p[1]), (self.grid.GRIDSIZE, self.grid.GRIDSIZE))
             pygame.draw.rect(surface, self.color, r)
             pygame.draw.rect(surface, (93, 216, 228), r, 1)
 
-    def handle_keys(self):
+    def handle_keys(self): # moving the snake according to the keys
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
